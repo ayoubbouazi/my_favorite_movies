@@ -4,7 +4,7 @@ import "../styles/main.css";
 
 import * as constants from "./constants/constants";
 import * as storage from "./functions/storage/storage";
-import * as Function from "./functions/validarEmail";
+import * as Function from "./functions/validation/validarEmail";
 
 constants.inputEmail.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
@@ -19,6 +19,8 @@ constants.inputEmail.addEventListener("keypress", (event) => {
 
 constants.btnAdd.addEventListener("click", (e) => {
   e.preventDefault();
+  const validarInput = Function.validarEmail(constants.inputEmail.value);
+  console.log(validarInput);
   storage.addMovieTolistLocalStorage();
   // console.log(movie);
 });
