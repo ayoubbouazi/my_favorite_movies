@@ -18,6 +18,8 @@ export function validate(inputEmail, inputTitle, inputSinopsis) {
 
     // Clean if the email is correct.
     constants.mensajeError.textContent = "";
+    // remove the class error.
+    constants.mensajeError.classList = "";
   } else {
     constants.divContent.appendChild(constants.mensajeError);
   }
