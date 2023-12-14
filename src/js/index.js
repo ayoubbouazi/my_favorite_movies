@@ -4,23 +4,29 @@ import "../styles/main.css";
 
 import * as constants from "./constants/constants";
 import * as storage from "./functions/storage/storage";
-import * as Function from "./functions/validation/validarEmail";
+import * as Function from "./functions/validation/validation";
 
-constants.inputEmail.addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    console.log("Enter key pressed");
-
-    // Clean the list every click.
-    storage.titlesList.innerHTML = "";
-    event.preventDefault();
-    Function.validarEmail();
-  }
-});
+// get the list from localStorage.
+storage.getListFromLocalStorage();
 
 constants.btnAdd.addEventListener("click", (e) => {
   e.preventDefault();
-  const validarInput = Function.validarEmail(constants.inputEmail.value);
-  console.log(validarInput);
-  storage.addMovieTolistLocalStorage();
-  // console.log(movie);
+  Function.validate(constants.inputEmail.value);
+
+  // Clean the list every click.
+  storage.titlesList.innerHTML = "";
+
+  // get the list from localStorage.
+  storage.getListFromLocalStorage();
 });
+
+// constants.inputEmail.addEventListener("keypress", (event) => {
+//   if (event.key === "Enter") {
+//     console.log("Enter key pressed");
+
+//     // Clean the list every click.
+//     storage.titlesList.innerHTML = "";
+//     event.preventDefault();
+//     Function.validarEmail();
+//   }
+// });

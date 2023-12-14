@@ -1,19 +1,23 @@
 import * as constants from "../../constants/constants";
 import * as storage from "../storage/storage";
 
-export function validarEmail(inputEmail) {
+export function validate(inputEmail, inputTitle, inputSinopsis) {
   constants.mensajeError.textContent =
     "The email address " + inputEmail + " is incorrect.";
-  constants.mensajeError.style = "color: red; font-weight: bold";
-  if (inputEmail === "") {
-    constants.mensajeError.textContent = "Please, enter an email address.";
+  
+  constants.mensajeError.classList = "error";
+  if (inputEmail === "" || inputTitle === "" || inputSinopsis === "") {
+    constants.mensajeError.textContent = "The fields are required.";
     constants.divContent.appendChild(constants.mensajeError);
-  } else
-  if (constants.validEmail.test(inputEmail)) {
+  } else if (constants.validEmail.test(inputEmail)) {
+    // Add the email to the sessionStorage.
     storage.addEmailToSessionStorage();
+
+    // Add the movie to the localStorage.
+    storage.addMovieTolistLocalStorage();
+
     // Clean if the email is correct.
     constants.mensajeError.textContent = "";
- 
   } else {
     constants.divContent.appendChild(constants.mensajeError);
   }

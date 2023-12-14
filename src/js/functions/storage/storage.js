@@ -21,7 +21,7 @@ export function addMovieTolistLocalStorage() {
   listMovie.push(movie);
 
   localStorage.setItem("movies", JSON.stringify(listMovie));
-
+  console.log(listMovie);
   // Clean the inputs title & sinopsis.
   constants.sinopsisInput.value = "";
   constants.titleInput.value = "";
@@ -62,9 +62,11 @@ export function getListFromLocalStorage(listMovie) {
         const button = event.target;
         console.log(button);
         const title = pTitle.textContent;
-        const devDetails = document.getElementById("details");
 
         if (button.id === "btnDetails") {
+          const devDetails = document.getElementById("details-content");
+          devDetails.classList = "details";
+          // constants.detailsContent.appendChild(devDetails);
           console.log("CLICK SHOW INFO...");
           console.log(data.sinopsis);
           // Clean div before show details.
@@ -88,7 +90,7 @@ export function getListFromLocalStorage(listMovie) {
       });
     });
   } else {
-    alert(" The list is empty!")
+    alert(" The list is empty!");
   }
 }
 
