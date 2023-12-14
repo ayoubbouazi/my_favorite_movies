@@ -40,7 +40,7 @@ export function getListFromLocalStorage(listMovie) {
       const divP = document.createElement("div");
 
       const showTitle = document.createTextNode(`${data.title}`);
-      const showSinopsis = document.createTextNode(`Details: ${data.sinopsis}`);
+      const showSinopsis = document.createTextNode(`Sinopsis: ${data.sinopsis}`);
 
       titlesList.appendChild(linew);
 
